@@ -5,8 +5,9 @@ import {StockComponent} from './stock/stock.component';
 import {Get404Component} from './get404/get404.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'stock/:id', component: StockComponent,data:[{"ispod":true}]},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'stock/:id', component: StockComponent, data: [{"ispod": true}]},
   {path: '**', component: Get404Component}
 ];
 
