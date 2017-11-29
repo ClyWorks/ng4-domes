@@ -1,10 +1,24 @@
-<p>
-  这里是详情页面
-</p>
-<p>
-  这个id是{{ stockId }}
-</p>
+<div class="stock">
+  <p>
+    这里是详情页面
+  </p>
+  <p>
+    这个id是{{ stock.id }}
+  </p>
+  <p>
+    这个名字是{{ stock.name }}
+  </p>
+  <p>
+    ispord为{{ ispord }}
+  </p>
+  <p>
+    <button (click)="hosfocus = true">
+      关注
+    </button>
+  </p>
+  <a [routerLink]="['./']">买家信息</a>
+  <a [routerLink]="['./mai']" [queryParams]="{id:300}">卖家信息</a>
+  <router-outlet></router-outlet>
 
-<p>
-  ispord为{{ ispord }}
-</p>
+</div>
+

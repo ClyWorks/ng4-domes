@@ -11,7 +11,9 @@ export class StockComponent implements OnInit {
   private ispord: boolean;
 
 
-  private stockId: number;
+  private stock: Stock;
+
+  private hosfocus: boolean = false;
 
   constructor(private routeInfo: ActivatedRoute) {
   }
@@ -22,10 +24,21 @@ export class StockComponent implements OnInit {
     // 通过 {path: 'stock/:id', component: StockComponent}, 和 [routerLink]="['/stock',1] 方式传递参数取出方法 快照
     // this.stockId = this.routeInfo.snapshot.params["id"]
     // 当前组件路由当前组件  用订阅的方式取出参数才会重新赋值给this.id 用快照的方式  不会重新赋值
-    this.routeInfo.params.subscribe((params: Params) => this.stockId = params["id"]);
+    // this.routeInfo.params.subscribe((params: Params) => this.stockId = params["id"]);
+    this.routeInfo.data.subscribe((data: { stock: Stock }) => {
+      this.stock = data.stock;
+    })
     this.ispord = this.routeInfo.snapshot.data[0]["ispod"];
 
   }
 
+  isFocus() {
+    return this.hosfocus;
+  }
+}
 
+export class Stock {
+  constructor(private id: number, private name: string) {
+
+  }
 }
